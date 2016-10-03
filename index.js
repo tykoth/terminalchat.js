@@ -27,7 +27,7 @@ io.on('connection', function(socket){
 });
 
 
-http.listen(3000, function(){
+http.listen(80, function(){
   console.log('listening on *:3000');
   // tentando abrir movo kiosk
   //"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --chrome --kiosk http://127.0.0.1:3000 --incognito --disable-pinch --overscroll-history-navigation=0
