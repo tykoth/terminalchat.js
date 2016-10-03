@@ -1,0 +1,27 @@
+{
+  "name": "TerminalChat.js (Boladasso's version)",
+  "version": "1.0.0",
+  "description": "Chat boladasso. Baixa ai e confere, vlw.",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tykoth/terminalchat.js.git"
+  },
+  "keywords": [
+    "terminal",
+    "chat",
+    "socket"
+  ],
+  "author": "Thiago Bocchile",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tykoth/terminalchat.js/issues"
+  },
+  "homepage": "https://github.com/tykoth/terminalchat.js#readme",
+  "dependencies": {
+    "express": "^4.10.2",
+    "socket.io": "^1.4.8"
+  }
+}

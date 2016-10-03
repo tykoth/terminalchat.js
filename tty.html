@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+		* { 
+			margin: 0; padding: 0; box-sizing: border-box; 
+			font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+		}
+		body {
+			background:black;
+			color:white;
+			font-family:'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace, 'Courier New';
+            font-size:16px;
+			/*white-space: pre;*/
+		}
+	  
+      #messages { list-style-type: none; margin: 0; padding: 0; display:block;width:100%; }
+	  
+        .stdin {
+            background-color:#000000;
+            border:0 none;
+            color:#FFFFFF;
+            font-family:inherit;
+            font-size:16px;
+            line-height:inherit;
+            margin:0;
+            outline-style:none;
+            outline-width:0;
+            padding:0;
+            width:100%;
+			left: 0px;
+			position: absolute;
+        }	  
+    </style>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <input type="text" id="m" autocomplete="off" class="stdin" />
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      var socket = io();
+	  
+	  
+	  $(document).on('click', function(e){
+		$('.stdin').focus();
+	  }).on('keypress', function(e){
+	  
+		if(e.which == 13){
+			socket.emit('chat message', $('.stdin').val());
+			$('.stdin').val('');
+			return false;		
+		}
+	  });
+	  
+      socket.on('chat message', function(msg){
+        $('#messages').append($('<li>').text(msg));
+      });
+    </script>
+  </body>
+</html>
