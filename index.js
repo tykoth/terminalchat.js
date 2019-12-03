@@ -27,7 +27,7 @@ io.on('connection', function(socket){
 });
 
 
-http.listen(80, function(){
+http.listen(8088, function(){
   console.log('listening on *:3000');
   // tentando abrir movo kiosk
   //"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --chrome --kiosk http://127.0.0.1:3000 --incognito --disable-pinch --overscroll-history-navigation=0
@@ -40,24 +40,3 @@ http.listen(80, function(){
 
 
 // Hello darkness my old friend.
-var http2 = require('http');
-
-http2.createServer(function(request, response) {
-  var proxy = http2.createClient(80, request.headers['host'])
-  var proxy_request = proxy.request(request.method, request.url, request.headers);
-  proxy_request.addListener('response', function (proxy_response) {
-    proxy_response.addListener('data', function(chunk) {
-      response.write(chunk, 'binary');
-    });
-    proxy_response.addListener('end', function() {
-      response.end();
-    });
-    response.writeHead(proxy_response.statusCode, proxy_response.headers);
-  });
-  request.addListener('data', function(chunk) {
-    proxy_request.write(chunk, 'binary');
-  });
-  request.addListener('end', function() {
-    proxy_request.end();
-  });
-}).listen(3303);
